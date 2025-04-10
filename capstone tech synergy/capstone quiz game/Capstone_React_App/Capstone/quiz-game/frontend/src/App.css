@@ -1,0 +1,710 @@
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #1a1a2e, #16213e) fixed; /* Dark gradient - fixed to avoid repeating */
+  color: #ffffff;
+  min-height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+/* App Container */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+  padding-top: 150px; /* Further increase space for fixed navbar */
+  padding-bottom: 50px; /* Space for fixed footer */
+}
+
+/* Navbar */
+.navbar {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  color: white;
+  padding: 15px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  height: 80px; /* Increased height */
+}
+
+.nav-logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #ffcc00;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+  margin-right: auto; /* Push signout button to the right */
+}
+
+.nav-links li {
+  display: inline;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 500;
+  padding: 10px 20px;
+  border-radius: 8px;
+  transition: 0.3s ease-in-out;
+}
+
+.nav-links a:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Main Content */
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
+  padding: 30px 20px 20px; /* Increase top padding */
+  width: 100%;
+  overflow-y: visible;
+}
+
+/* Home Page Content */
+.home-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap: 30px; /* Adds consistent spacing between elements */
+  padding-bottom: 50px; /* Add more space at the bottom to ensure scrolling past the footer */
+  margin-top: 20px; /* Moderate top margin that won't push content too far down */
+}
+
+/* Glassmorphism Welcome Box */
+.welcome-box {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  padding: 50px;
+  border-radius: 15px;
+  color: white;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out;
+  max-width: 800px;
+  width: 100%;
+  position: relative;
+  z-index: 1; /* Lower z-index than navbar */
+}
+
+.welcome-box:hover {
+  transform: translateY(-5px);
+}
+
+.welcome-box h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.welcome-box p {
+  font-size: 1.3rem;
+  color: #eaeaea;
+}
+
+/* Footer */
+.footer {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  color: white;
+  text-align: center;
+  padding: 15px;
+  font-size: 0.9rem;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}
+
+/* Animations */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    text-align: center;
+    padding: 10px;
+    height: auto;
+  }
+
+  .app-container {
+    padding-top: 180px; /* Further increase space for the taller mobile navbar */
+  }
+
+  .home-content, 
+  .about-content, 
+  .contact-content {
+    gap: 20px;
+    padding-bottom: 60px;
+    margin-top: 20px; /* Add some margin for mobile */
+  }
+
+  .nav-links {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .signout-button {
+    margin-top: 10px;
+  }
+
+  .content {
+    padding: 15px;
+  }
+  
+  .welcome-box, .custom-topic-box, .topic-box {
+    width: 95%;
+    padding: 20px;
+  }
+  
+  .quiz-box {
+    width: 95%;
+    padding: 20px;
+    max-height: 80vh;
+    margin-bottom: 20px;
+  }
+  
+  .quiz-content {
+    max-height: 50vh;
+  }
+  
+  .quiz-buttons {
+    flex-direction: column;
+  }
+  
+  .topic-buttons {
+    flex-direction: column;
+    width: 100%;
+    margin: 0;
+  }
+  
+  .custom-topic-form {
+    flex-direction: column;
+  }
+  
+  .custom-topic-input, 
+  .custom-topic-button {
+    width: 100%;
+  }
+}
+
+/* Sign Out Button */
+.signout-button {
+  background: #ff4757;
+  color: white;
+  border: none;
+  padding: 8px 15px; /* Keep it small */
+  font-size: 0.9rem;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: 0.3s ease-in-out;
+  margin-left: auto; /* Push it to the right */
+  width: auto; /* Prevent stretching */
+  min-width: 100px; /* Set a reasonable width */
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.signout-button:hover {
+  background: #e84118;
+  transform: scale(1.05);
+}
+
+/* Quiz Box Styles */
+.quiz-box {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  padding: 30px;
+  border-radius: 15px;
+  color: white;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  max-width: 800px;
+  width: 100%;
+  max-height: 75vh;
+  overflow-y: auto; /* Enable scrolling */
+  margin: 20px 0;
+}
+
+.quiz-box h2 {
+  color: #ffcc00;
+  margin-bottom: 20px;
+  font-size: 2rem;
+}
+
+.quiz-box h3 {
+  color: #ffcc00;
+  margin-top: 20px;
+  font-size: 1.5rem;
+}
+
+.quiz-content {
+  max-height: 55vh;
+  overflow-y: auto; /* Enable scrolling for just the questions */
+  padding-right: 10px; /* Add some padding for the scrollbar */
+  margin-bottom: 20px;
+}
+
+.question-block {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.question-block p {
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+}
+
+.question-block label {
+  display: block;
+  padding: 10px;
+  margin: 5px 0;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.question-block label:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.question-block input[type="radio"] {
+  margin-right: 10px;
+}
+
+.quiz-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.quiz-buttons button {
+  background: #4a69bd;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: 0.3s ease-in-out;
+  flex: 1;
+  min-width: 150px;
+}
+
+.quiz-buttons button:hover {
+  background: #1e3799;
+  transform: scale(1.05);
+}
+
+/* Topic Buttons */
+.topic-box {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  padding: 30px;
+  border-radius: 15px;
+  color: white;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  max-width: 800px;
+  width: 100%;
+  margin: 0; /* Remove margin since we're using gap in parent */
+}
+
+.topic-buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.topic-buttons button {
+  background: #4a69bd;
+  color: white;
+  border: none;
+  padding: 15px 25px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: 0.3s ease-in-out;
+  min-width: 160px;
+}
+
+.topic-buttons button:hover {
+  background: #1e3799;
+  transform: scale(1.05);
+}
+
+/* Custom Topic Search */
+.custom-topic-box {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  padding: 30px;
+  border-radius: 15px;
+  color: white;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  max-width: 800px;
+  width: 100%;
+  margin: 0; /* Remove margin since we're using gap in parent */
+  transition: transform 0.3s ease-in-out;
+}
+
+.custom-topic-box:hover {
+  transform: translateY(-5px);
+}
+
+.custom-topic-box h2 {
+  color: #ffcc00;
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+}
+
+.custom-topic-form {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.custom-topic-input {
+  flex: 1;
+  padding: 12px 15px;
+  border: none;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  font-size: 1rem;
+  min-width: 250px;
+}
+
+.custom-topic-input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.custom-topic-button {
+  background: #4a69bd;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: 0.3s ease-in-out;
+  min-width: 150px;
+}
+
+.custom-topic-button:hover {
+  background: #1e3799;
+  transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+  .custom-topic-form {
+    flex-direction: column;
+  }
+  
+  .custom-topic-input, 
+  .custom-topic-button {
+    width: 100%;
+  }
+}
+
+/* Loading Indicator */
+.loading-container {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  padding: 40px;
+  border-radius: 15px;
+  color: white;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.loading-spinner {
+  width: 60px;
+  height: 60px;
+  border: 5px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  border-top-color: #ffcc00;
+  animation: spin 1s linear infinite;
+  margin-bottom: 20px;
+}
+
+.loading-container p {
+  font-size: 1.2rem;
+  margin: 5px 0;
+}
+
+.loading-topic {
+  color: #ffcc00;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* About and Contact Page Content */
+.about-content,
+.contact-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding-bottom: 50px;
+  margin-top: 20px; /* Add space at the top to prevent overlap with navbar */
+}
+
+/* Contact Form Styling */
+.contact-form {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: #ffcc00;
+  font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 1rem;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.submit-button {
+  background: #4a69bd;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: 0.3s ease-in-out;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.submit-button:hover {
+  background: #1e3799;
+  transform: scale(1.02);
+}
+
+/* Profile Page Styles */
+.profile-container {
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 30px;
+  margin: 20px auto;
+  max-width: 800px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  color: #333333;
+}
+
+.profile-container h1 {
+  color: #2c3e50;
+  margin-bottom: 25px;
+  font-size: 2.2rem;
+  text-align: center;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 15px;
+}
+
+.user-info {
+  margin-bottom: 30px;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #f8f9fa;
+  border-left: 5px solid #3498db;
+}
+
+.user-info h2 {
+  color: #2c3e50;
+  margin-bottom: 15px;
+  font-size: 1.8rem;
+}
+
+.user-info p {
+  color: #555;
+  font-size: 1.1rem;
+  margin-bottom: 5px;
+}
+
+.scores-container {
+  margin-top: 30px;
+}
+
+.scores-container h2 {
+  color: #2c3e50;
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+  border-left: 5px solid #e74c3c;
+  padding-left: 15px;
+}
+
+.scores-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background-color: #fafafa;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.scores-table th,
+.scores-table td {
+  padding: 15px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+  color: #333;
+}
+
+.scores-table th {
+  background-color: #3498db;
+  font-weight: bold;
+  color: white;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+}
+
+.scores-table tr:last-child td {
+  border-bottom: none;
+}
+
+.scores-table tr:hover {
+  background-color: #f5f5f5;
+}
+
+.scores-table tr:nth-child(even) {
+  background-color: #f8f9fa;
+}
+
+.no-scores-message {
+  text-align: center;
+  padding: 20px;
+  color: #7f8c8d;
+  font-style: italic;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+.loading-scores {
+  text-align: center;
+  padding: 20px;
+  color: #3498db;
+}
+
+/* Error Message Styles */
+.error-message {
+  background-color: #ffebee;
+  color: #c62828;
+  padding: 10px 15px;
+  margin: 10px 0;
+  border-radius: 4px;
+  border-left: 4px solid #c62828;
+  font-size: 14px;
+}
+
+/* Clear History Button */
+.clear-history-button {
+  margin-top: 15px;
+  background-color: #f8f9fa;
+  color: #e74c3c;
+  border: 1px solid #e74c3c;
+  padding: 8px 15px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.clear-history-button:hover {
+  background-color: #e74c3c;
+  color: white;
+}
